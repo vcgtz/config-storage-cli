@@ -1,0 +1,35 @@
+{
+  "name": "sv-cli",
+  "version": "0.0.1",
+  "description": "CLI application to store key-value pairs in your computer",
+  "main": "./dist/cli.js",
+  "preferGlobal": true,
+  "bin": {
+		"sv": "./dist/cli.js"
+	},
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/vcgtz/sv-cli.git"
+  },
+  "keywords": [
+    "cli",
+    "storage",
+    "nodejs",
+    "js",
+    "command",
+    "line"
+  ],
+  "author": "Vicente Gutiérrez (@vcgtz)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vcgtz/sv-cli/issues"
+  },
+  "homepage": "https://github.com/vcgtz/sv-cli#readme",
+  "dependencies": {
+    "typescript": "^5.0.4"
+  }
+}
