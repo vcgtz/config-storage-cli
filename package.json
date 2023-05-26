@@ -5,12 +5,12 @@
   "main": "./dist/cli.js",
   "preferGlobal": true,
   "bin": {
-		"config-storage": "./dist/cli.js",
-		"csc": "./dist/cli.js"
-	},
+    "config-storage": "./dist/cli.js",
+    "csc": "./dist/cli.js"
+  },
   "files": [
-		"dist"
-	],
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch"
@@ -34,6 +34,7 @@
   },
   "homepage": "https://github.com/vcgtz/config-storage-cli#readme",
   "dependencies": {
+    "commander": "^10.0.1",
     "typescript": "^5.0.4"
   }
 }
