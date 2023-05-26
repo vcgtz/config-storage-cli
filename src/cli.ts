@@ -59,7 +59,21 @@ const initCommander = (config: ConfigurationStorage) => {
   program
     .command('delete')
     .description('Delete a stored value using a key')
-    .argument('<key>', 'Key to identify your key-pair value');
+    .argument('<key>', 'Key to identify your key-pair value')
+    .action(async (key: string) => {
+      try {
+        if (!(await config.exists(key))) {
+          console.log(`The key '${key}' does not exist.`);
+          return;
+        }
+
+        await config.del(key);
+
+        console.log(`The '${key}' was deleted succesfully.`);
+      } catch (err: any) {
+        console.log(`An error has happend: ${err.toString()}`);
+      }
+    });
 
   // Clean command
   program
