@@ -1,11 +1,12 @@
 {
-  "name": "sv-cli",
+  "name": "config-storage-cli",
   "version": "0.0.1",
   "description": "CLI application to store key-value pairs in your computer",
   "main": "./dist/cli.js",
   "preferGlobal": true,
   "bin": {
-		"sv": "./dist/cli.js"
+		"config-storage": "./dist/cli.js",
+		"csc": "./dist/cli.js"
 	},
   "files": [
 		"dist"
@@ -16,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/vcgtz/sv-cli.git"
+    "url": "git+ssh://git@github.com/vcgtz/config-storage-cli.git"
   },
   "keywords": [
     "cli",
@@ -29,9 +30,9 @@
   "author": "Vicente Gutiérrez (@vcgtz)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vcgtz/sv-cli/issues"
+    "url": "https://github.com/vcgtzconfig-storage-cli/issues"
   },
-  "homepage": "https://github.com/vcgtz/sv-cli#readme",
+  "homepage": "https://github.com/vcgtz/config-storage-cli#readme",
   "dependencies": {
     "typescript": "^5.0.4"
   }
