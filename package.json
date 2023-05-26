@@ -34,6 +34,7 @@
   },
   "homepage": "https://github.com/vcgtz/config-storage-cli#readme",
   "dependencies": {
+    "@types/node": "^20.2.4",
     "commander": "^10.0.1",
     "typescript": "^5.0.4"
   }

@@ -14,25 +14,30 @@ program
   .command('save')
   .description('Save a key-value pair in your computer')
   .argument('<key>', 'Key to identify your key-pair value')
-  .argument('<value>', 'Value to be stored')
+  .argument('<value>', 'Value to be stored');
 
 // Get command
 program
   .command('get')
   .description('Get a stored value using a key')
   .argument('<key>', 'Key to identify your key-pair value')
-  .option('-c, --c', 'Copy value to the clipboard')
+  .option('-c, --c', 'Copy value to the clipboard');
 
 // Delete command
 program
   .command('delete')
   .description('Delete a stored value using a key')
-  .argument('<key>', 'Key to identify your key-pair value')
+  .argument('<key>', 'Key to identify your key-pair value');
+
+// Clean command
+program
+  .command('clean')
+  .description('Clean all your stored data');
 
 // Configure help
 program.configureHelp({
-  sortSubcommands: true,
+  sortSubcommands: false,
   subcommandTerm: (cmd) => cmd.name()
 });
 
-program.parse();
+program.parse(process.argv);
