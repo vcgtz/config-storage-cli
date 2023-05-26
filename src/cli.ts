@@ -2,6 +2,7 @@
 
 import { Command } from 'commander';
 import clipboard from 'clipboardy';
+import inquirer from 'inquirer';
 import { ConfigurationStorage } from 'config-storage';
 
 const storageNameFolder = 'config_storage_cli';
@@ -72,9 +73,22 @@ const initCommander = (config: ConfigurationStorage) => {
           return;
         }
 
-        await config.del(key);
+        const answers = await inquirer.prompt([
+          {
+            type: 'confirm',
+            name: 'delete',
+            message: `Are you sure you want to delete your ${key} key?`,
+            default: false,
+          }
+        ]);
 
-        console.log(`The '${key}' was deleted succesfully.`);
+        if (answers.delete) {
+          await config.del(key);
+
+          console.log(`The '${key}' was deleted succesfully.`);
+        } else {
+          console.log(`Operation aborted.`);
+        }
       } catch (err: any) {
         console.log(`An error has happend: ${err.toString()}`);
       }
@@ -86,9 +100,22 @@ const initCommander = (config: ConfigurationStorage) => {
     .description('Clean all your stored data')
     .action(async () => {
       try {
-        await config.clean();
+        const answers = await inquirer.prompt([
+          {
+            type: 'confirm',
+            name: 'clean',
+            message: 'Are you sure you want to delete all your stored keys?',
+            default: false,
+          }
+        ]);
 
-        console.log(`All of your data was deleted succesfully.`);
+        if (answers.clean) {
+          await config.clean();
+
+          console.log(`All of your data was deleted succesfully.`);
+        } else {
+          console.log(`Operation aborted.`);
+        }
       } catch (err: any) {
         console.log(`An error has happend: ${err.toString()}`);
       }
