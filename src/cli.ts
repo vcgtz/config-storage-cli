@@ -28,7 +28,7 @@ const initCommander = (config: ConfigurationStorage) => {
 
         await config.set(key, value);
 
-        console.log(`The '${key}' was stored succesfully.`);
+        console.log(`The '${key}' key was stored succesfully.`);
       } catch (err: any) {
         console.log(`An error has happend: ${err.toString()}`);
       }
@@ -78,7 +78,16 @@ const initCommander = (config: ConfigurationStorage) => {
   // Clean command
   program
     .command('clean')
-    .description('Clean all your stored data');
+    .description('Clean all your stored data')
+    .action(async () => {
+      try {
+        await config.clean();
+
+        console.log(`All of your data was deleted succesfully.`);
+      } catch (err: any) {
+        console.log(`An error has happend: ${err.toString()}`);
+      }
+    });
 
   // Configure help
   program.configureHelp({
