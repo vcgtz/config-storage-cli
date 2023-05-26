@@ -73,6 +73,17 @@ $ config-storage delete goodbye
 The key 'goodbye' does not exist.
 ```
 
+### :arrow_right: `list` command
+```text
+$ config-storage list
+
+Stored Keys:
+token_one
+token_two
+username_web_one
+username_web_two
+```
+
 ### :arrow_right: `clean` command
 ```text
 $ config-storage clean
