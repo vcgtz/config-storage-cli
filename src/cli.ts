@@ -46,7 +46,7 @@ const initCommander = (config: ConfigurationStorage) => {
     .action(async (key: string, options: { copy?: boolean }) => {
       try {
         if (!(await config.exists(key))) {
-          console.log(`The key ${chalk.yellow.bold(key)} does not exist.`);
+          console.log(`The ${chalk.yellow.bold(key)} key does not exist.`);
           return;
         }
 
@@ -70,7 +70,7 @@ const initCommander = (config: ConfigurationStorage) => {
     .action(async (key: string) => {
       try {
         if (!(await config.exists(key))) {
-          console.log(`The key ${chalk.yellow.bold(key)} does not exist.`);
+          console.log(`The ${chalk.yellow.bold(key)} key does not exist.`);
           return;
         }
 
@@ -86,7 +86,7 @@ const initCommander = (config: ConfigurationStorage) => {
         if (answers.delete) {
           await config.del(key);
 
-          console.log(`The ${chalk.yellow.bold(key)} was deleted succesfully.`);
+          console.log(`The ${chalk.yellow.bold(key)} key was deleted succesfully.`);
         } else {
           console.log(`Operation aborted.`);
         }
