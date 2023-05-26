@@ -3,6 +3,7 @@
 import { Command } from 'commander';
 import clipboard from 'clipboardy';
 import inquirer from 'inquirer';
+import chalk from 'chalk';
 import { ConfigurationStorage } from 'config-storage';
 
 const storageNameFolder = 'config_storage_cli';
@@ -25,12 +26,12 @@ const initCommander = (config: ConfigurationStorage) => {
     .action(async (key: string, value: string) => {
       try {
         if (await config.exists(key)) {
-          console.log('The existent value will be overwritten.');
+          console.log('The current value has been overwritten.');
         }
 
         await config.set(key, value);
 
-        console.log(`The '${key}' key was stored succesfully.`);
+        console.log(`The ${chalk.yellow.bold(key)} key was stored succesfully.`);
       } catch (err: any) {
         console.log(`An error has happend: ${err.toString()}`);
       }
@@ -45,7 +46,7 @@ const initCommander = (config: ConfigurationStorage) => {
     .action(async (key: string, options: { copy?: boolean }) => {
       try {
         if (!(await config.exists(key))) {
-          console.log(`The key '${key}' does not exist.`);
+          console.log(`The key ${chalk.yellow.bold(key)} does not exist.`);
           return;
         }
 
@@ -69,7 +70,7 @@ const initCommander = (config: ConfigurationStorage) => {
     .action(async (key: string) => {
       try {
         if (!(await config.exists(key))) {
-          console.log(`The key '${key}' does not exist.`);
+          console.log(`The key ${chalk.yellow.bold(key)} does not exist.`);
           return;
         }
 
@@ -85,7 +86,7 @@ const initCommander = (config: ConfigurationStorage) => {
         if (answers.delete) {
           await config.del(key);
 
-          console.log(`The '${key}' was deleted succesfully.`);
+          console.log(`The ${chalk.yellow.bold(key)} was deleted succesfully.`);
         } else {
           console.log(`Operation aborted.`);
         }
@@ -129,9 +130,9 @@ const initCommander = (config: ConfigurationStorage) => {
       try {
         const storedKeys = await config.getAll();
 
-        console.log('Stored Keys:');
+        console.log(chalk.bold('Stored Keys:'));
         for (const key in storedKeys) {
-          console.log(key);
+          console.log(chalk.yellow(key));
         }
       } catch (err: any) {
         console.log(`An error has happend: ${err.toString()}`);

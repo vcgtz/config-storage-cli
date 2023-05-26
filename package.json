@@ -35,6 +35,7 @@
   },
   "homepage": "https://github.com/vcgtz/config-storage-cli#readme",
   "dependencies": {
+    "chalk": "^5.2.0",
     "clipboardy": "^3.0.0",
     "commander": "^10.0.1",
     "config-storage": "^2.1.3",
