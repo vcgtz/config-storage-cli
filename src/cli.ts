@@ -11,7 +11,7 @@ const initCommander = (config: ConfigurationStorage) => {
 
   // Main description
   program
-    .name('config-storage-cli')
+    .name('config-storage')
     .description('CLI util to store key-value pairs in your computer')
     .version('0.0.1');
 
