@@ -19,7 +19,7 @@ npm i -g config-storage-cli
 ```
 
 ## Usage
-**Note:** You can also use `csc` instead of `config storage`.
+**Note:** You can also use `csc` instead of `config-storage`.
 
 You can use the command `config-storage` to see all the available commands.
 ```text
@@ -50,7 +50,7 @@ config-storage set <key> <value>
 ```text
 $ config-storage set hello world
 
-The 'hello' key was stored succesfully.
+The hello key was stored succesfully.
 ```
 
 ### :arrow_right: `get` command
@@ -70,11 +70,19 @@ $ config-storage get goodbye
 The key 'goodbye' does not exist.
 ```
 
+You can use the option `-c` to copy the stored value into your clipboard. 
+```text
+$ config-storage get -c hello
+
+world
+```
+
 ### :arrow_right: `delete` command
 ```text
 $ config-storage delete hello
 
-The 'hello' was deleted succesfully.
+? Are you sure you want to delete your hello key? (y/N) y
+The hello key was deleted succesfully.
 ```
 
 ```text
@@ -98,6 +106,7 @@ username_web_two
 ```text
 $ config-storage clean
 
+? Are you sure you want to delete all your stored keys? Yes
 All of your data was deleted succesfully.
 ```
 
