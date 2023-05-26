@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
+import clipboard from 'clipboardy';
 import ConfigurationStorage from 'config-storage';
 
 const storageNameFolder = 'config_storage_cli';
 
-const initCommander = (config: ConfigurationStorage) => {
+const initCommander = (config: any) => {
   const program = new Command();
 
   // Main description
@@ -39,8 +40,8 @@ const initCommander = (config: ConfigurationStorage) => {
     .command('get')
     .description('Get a stored value using a key')
     .argument('<key>', 'Key to identify your key-pair value')
-    .option('-c, --c', 'Copy value to the clipboard')
-    .action(async (key: string) => {
+    .option('-c, --copy', 'Copy value to the clipboard')
+    .action(async (key: string, options: { copy?: boolean }) => {
       try {
         if (!(await config.exists(key))) {
           console.log(`The key '${key}' does not exist.`);
@@ -48,6 +49,10 @@ const initCommander = (config: ConfigurationStorage) => {
         }
 
         const value = await config.get(key);
+
+        if (options.copy) {
+          clipboard.writeSync(value);
+        }
 
         console.log(value);
       } catch (err: any) {
@@ -99,7 +104,7 @@ const initCommander = (config: ConfigurationStorage) => {
 };
 
 const main = async () => {
-  const config = await ConfigurationStorage.getStorage(storageNameFolder);
+  const config = await ConfigurationStorage.default.getStorage(storageNameFolder);
 
   initCommander(config);
 };
