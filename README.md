@@ -1,10 +1,17 @@
-# config-storage-cli
-A CLI ve to store persistent key-pairs values on your computer.
-
-This package is based on https://www.npmjs.com/package/config-storage.
-
+# Config Storage CLI
 ![npm](https://img.shields.io/npm/l/config-storage-cli?color=blue)
 ![npm](https://img.shields.io/npm/v/config-storage-cli?color=blue)
+
+The **Config Storage CLI** is a command-line tool that allows you to store and retrieve values locally on your computer. It provides a simple and convenient way to manage key-value pairs, making it ideal for storing and accessing configuration settings, temporary data, and other types of information that you need to persist locally.
+
+**Features:**
+- Easy-to-use: The **Config Storage CLI** offers a user-friendly interface, allowing you to store and retrieve values with straightforward commands.
+- Key-Value Storage: It enables you to store data using key-value pairs, making it flexible for various use cases.
+- Secure Storage: Your values are stored locally on your computer, ensuring data privacy and security.
+
+Whether you need a convenient way to store configuration settings, API keys, or any other type of data locally, **Config Storage CLI** simplifies the process and provides a reliable solution for managing your stored values.
+
+This package is based on https://www.npmjs.com/package/config-storage.
 
 ## Installation
 ```bash
