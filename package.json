@@ -35,10 +35,12 @@
   },
   "homepage": "https://github.com/vcgtz/config-storage-cli#readme",
   "dependencies": {
-    "@types/node": "^20.2.4",
     "clipboardy": "^3.0.0",
     "commander": "^10.0.1",
-    "config-storage": "^2.1.3",
+    "config-storage": "^2.1.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.2.4",
     "typescript": "^5.0.4"
   }
 }
