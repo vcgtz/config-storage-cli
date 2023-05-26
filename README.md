@@ -19,7 +19,9 @@ npm i -g config-storage-cli
 ```
 
 ## Usage
-You can use the command `config-storage` to see the all available commands.
+**Note:** You can also use `csc` instead of `config storage`.
+
+You can use the command `config-storage` to see all the available commands.
 ```text
 $ config-storage
 
@@ -36,6 +38,7 @@ Commands:
   get            Get a stored value using a key
   delete         Delete a stored value using a key
   clean          Clean all your stored data
+  list           List all your stored keys
   help           display help for command
 ```
 
