@@ -36,6 +36,7 @@
   "dependencies": {
     "@types/node": "^20.2.4",
     "commander": "^10.0.1",
+    "config-storage": "^2.1.2",
     "typescript": "^5.0.4"
   }
 }

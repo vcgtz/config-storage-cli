@@ -1,43 +1,70 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-const program = new Command();
+import ConfigurationStorage from 'config-storage';
 
-// Main description
-program
-  .name('config-storage-cli')
-  .description('CLI util to store key-value pairs in your computer')
-  .version('0.0.1');
+const storageNameFolder = 'config_storage_cli';
 
-// Save command
-program
-  .command('save')
-  .description('Save a key-value pair in your computer')
-  .argument('<key>', 'Key to identify your key-pair value')
-  .argument('<value>', 'Value to be stored');
+const initCommander = (config: ConfigurationStorage) => {
+  const program = new Command();
 
-// Get command
-program
-  .command('get')
-  .description('Get a stored value using a key')
-  .argument('<key>', 'Key to identify your key-pair value')
-  .option('-c, --c', 'Copy value to the clipboard');
+  // Main description
+  program
+    .name('config-storage-cli')
+    .description('CLI util to store key-value pairs in your computer')
+    .version('0.0.1');
 
-// Delete command
-program
-  .command('delete')
-  .description('Delete a stored value using a key')
-  .argument('<key>', 'Key to identify your key-pair value');
+  // Save command
+  program
+    .command('save')
+    .description('Save a key-value pair in your computer')
+    .argument('<key>', 'Key to identify your key-pair value')
+    .argument('<value>', 'Value to be stored')
+    .action(async (key: string, value: string) => {
+      try {
+        if (await config.exists(key)) {
+          console.log('The existent value will be overwritten.');
+        }
 
-// Clean command
-program
-  .command('clean')
-  .description('Clean all your stored data');
+        await config.set(key, value);
 
-// Configure help
-program.configureHelp({
-  sortSubcommands: false,
-  subcommandTerm: (cmd) => cmd.name()
-});
+        console.log(`The '${key}' was stored succesfully`);
+      } catch (err: any) {
+        console.log(`An error has happend: ${err.toString()}`);
+      }
+    });
 
-program.parse(process.argv);
+  // Get command
+  program
+    .command('get')
+    .description('Get a stored value using a key')
+    .argument('<key>', 'Key to identify your key-pair value')
+    .option('-c, --c', 'Copy value to the clipboard');
+
+  // Delete command
+  program
+    .command('delete')
+    .description('Delete a stored value using a key')
+    .argument('<key>', 'Key to identify your key-pair value');
+
+  // Clean command
+  program
+    .command('clean')
+    .description('Clean all your stored data');
+
+  // Configure help
+  program.configureHelp({
+    sortSubcommands: false,
+    subcommandTerm: (cmd) => cmd.name()
+  });
+
+  program.parse(process.argv);
+};
+
+const main = async () => {
+  const config = await ConfigurationStorage.getStorage(storageNameFolder);
+
+  initCommander(config);
+};
+
+main();
