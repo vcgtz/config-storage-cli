@@ -25,20 +25,20 @@ Options:
   -h, --help     display help for command
 
 Commands:
-  save           Save a key-value pair in your computer
+  set            Set a key-value pair in your computer
   get            Get a stored value using a key
   delete         Delete a stored value using a key
   clean          Clean all your stored data
   help           display help for command
 ```
 
-### :arrow_right: `save` command
+### :arrow_right: `set` command
 ```text
-config-storage save <key> <value>
+config-storage set <key> <value>
 ```
 
 ```text
-$ config-storage save hello world
+$ config-storage set hello world
 
 The 'hello' key was stored succesfully.
 ```

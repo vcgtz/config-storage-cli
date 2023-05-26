@@ -15,10 +15,10 @@ const initCommander = (config: ConfigurationStorage) => {
     .description('CLI util to store key-value pairs in your computer')
     .version('0.0.1');
 
-  // Save command
+  // Set command
   program
-    .command('save')
-    .description('Save a key-value pair in your computer')
+    .command('set')
+    .description('Set a key-value pair in your computer')
     .argument('<key>', 'Key to identify your key-pair value')
     .argument('<value>', 'Value to be stored')
     .action(async (key: string, value: string) => {
