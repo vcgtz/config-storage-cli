@@ -2,11 +2,11 @@
 
 import { Command } from 'commander';
 import clipboard from 'clipboardy';
-import ConfigurationStorage from 'config-storage';
+import { ConfigurationStorage } from 'config-storage';
 
 const storageNameFolder = 'config_storage_cli';
 
-const initCommander = (config: any) => {
+const initCommander = (config: ConfigurationStorage) => {
   const program = new Command();
 
   // Main description
@@ -104,7 +104,7 @@ const initCommander = (config: any) => {
 };
 
 const main = async () => {
-  const config = await ConfigurationStorage.default.getStorage(storageNameFolder);
+  const config = await ConfigurationStorage.getStorage(storageNameFolder);
 
   initCommander(config);
 };
