@@ -93,6 +93,23 @@ const initCommander = (config: ConfigurationStorage) => {
         console.log(`An error has happend: ${err.toString()}`);
       }
     });
+  
+  // Clean command
+  program
+    .command('list')
+    .description('List all your stored keys')
+    .action(async () => {
+      try {
+        const storedKeys = await config.getAll();
+
+        console.log('Stored Keys:');
+        for (const key in storedKeys) {
+          console.log(key);
+        }
+      } catch (err: any) {
+        console.log(`An error has happend: ${err.toString()}`);
+      }
+    });
 
   // Configure help
   program.configureHelp({
