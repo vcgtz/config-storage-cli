@@ -28,7 +28,7 @@ const initCommander = (config: ConfigurationStorage) => {
 
         await config.set(key, value);
 
-        console.log(`The '${key}' was stored succesfully`);
+        console.log(`The '${key}' was stored succesfully.`);
       } catch (err: any) {
         console.log(`An error has happend: ${err.toString()}`);
       }
@@ -39,7 +39,21 @@ const initCommander = (config: ConfigurationStorage) => {
     .command('get')
     .description('Get a stored value using a key')
     .argument('<key>', 'Key to identify your key-pair value')
-    .option('-c, --c', 'Copy value to the clipboard');
+    .option('-c, --c', 'Copy value to the clipboard')
+    .action(async (key: string) => {
+      try {
+        if (!(await config.exists(key))) {
+          console.log(`The key '${key}' does not exist.`);
+          return;
+        }
+
+        const value = await config.get(key);
+
+        console.log(value);
+      } catch (err: any) {
+        console.log(`An error has happend: ${err.toString()}`);
+      }
+    });
 
   // Delete command
   program
