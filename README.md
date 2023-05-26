@@ -67,7 +67,7 @@ world
 ```text
 $ config-storage get goodbye
 
-The key 'goodbye' does not exist.
+The goodbye key does not exist.
 ```
 
 You can use the option `-c` to copy the stored value into your clipboard. 
@@ -88,7 +88,7 @@ The hello key was deleted succesfully.
 ```text
 $ config-storage delete goodbye
 
-The key 'goodbye' does not exist.
+The goodbye key does not exist.
 ```
 
 ### :arrow_right: `list` command
