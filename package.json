@@ -1,6 +1,6 @@
 {
   "name": "config-storage-cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "CLI application to store key-value pairs in your computer",
   "type": "module",
   "main": "./dist/cli.js",
